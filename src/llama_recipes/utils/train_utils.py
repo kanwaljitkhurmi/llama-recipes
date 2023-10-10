@@ -106,7 +106,7 @@ def train(model, train_dataloader,eval_dataloader, tokenizer, optimizer, lr_sche
                         else:
                             batch[key] = batch[key].to('cuda:0') 
                     flop_check_done = False 
-                    if train_config.flop_counter and  step == 3 and not flop_check_done:
+                    if train_config.flop_counter and  step == 1 and not flop_check_done:
                         flop_counter = FlopCounterMode(rank=local_rank)
                         with flop_counter:           
                             loss = model(**batch).loss
